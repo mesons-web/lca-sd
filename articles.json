@@ -33,5 +33,12 @@
   "path": "articles/5.json",
   "image": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png",
   "summary": "DNS stands for Domain Name System. It’s like the phonebook of the internet, translating human-friendly domain names (like hello.com) into computer-friendly IP addresses."
+},
+  {
+  "id": 6,
+  "title": "What is CI/CD and What Is It Used For?",
+  "path": "articles/6.json",
+  "image": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png",
+  "summary": "CI/CD stands for Continuous Integration and Continuous Delivery (or Deployment). It is a development practice and automation pipeline that enables teams to deliver code changes more frequently, reliably, and efficiently."
 }
 ]
