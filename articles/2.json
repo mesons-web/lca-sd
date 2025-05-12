@@ -1,0 +1,139 @@
+[
+    {
+      "type": "h4",
+      "text": "What is Redis Cache and Database?"
+    },
+    {
+      "type": "p5",
+      "text": "Have you ever wondered how your favorite apps like Amazon or Twitter deliver data so fast — as if they knew what you were going to click?"
+    },
+    {
+      "type": "p5",
+      "text": "That blazing speed is thanks to something called Redis."
+    },
+    {
+        "type": "p5",
+        "text":"Redis (Remote Dictionary Server) is an open-source, in-memory, multi-model database known for its sub-millisecond latency."
+    },
+    {
+        "type": "p5",
+        "text":"Imagine Redis like a super-fast notebook for your applications — one that lives entirely in memory (RAM), not on a slow disk."
+    },
+    {
+      "type": "h4",
+      "text": "Redis at a Glance:"
+    },
+    {
+      "type": "ul",
+      "text": [
+        "Open-source and free to use",
+        "Stores key-value pairs in memory",
+        "Famous for blazing-fast performance",
+        "Can be used as a cache or even a primary database"
+      ]
+    },
+    {
+        "type": "img",
+        "text": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png",
+        "style": "w-100% h-18 br-1"
+      },
+    {
+      "type": "h4",
+      "text": "Why Redis Was Created"
+    },
+    {
+      "type": "p5",
+      "text": "Redis was built in 2009 when traditional relational databases were too slow to serve data to fast-growing apps like Twitter. It started as a cache, but over time evolved into a full-fledged primary database."
+    },
+    {
+        "type": "p5",
+        "text": "It flipped the game by:"
+      },
+      {
+        "type": "ul",
+        "text": [
+          "Prioritizing in-memory operations over slow disk I/O",
+          "Supporting data durability with backups and snapshots"
+        ]
+      },
+      {
+        "type": "h4",
+        "text": "Data Structures in Redis"
+      },
+      {
+        "type": "p5",
+        "text": "Redis isn't just about storing strings. It supports powerful data types:"
+      },
+      {
+        "type": "img",
+        "text": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png",
+        "style": "w-100% h-18 br-1"
+      },
+      {
+        "type": "p5",
+        "text": "These types feel natural if you've used any programming language."
+      },
+      {
+        "type": "h4",
+        "text": "Cache vs Database: The Redis Evolution"
+      },
+    {
+      "type": "p5",
+      "text": "Initially, Redis was used as a cache to boost performance. But today?"
+    },
+    {
+        "type": "p5",
+        "text": "Redis can be used as a standalone primary database — no extra caching layer needed."
+      },
+      {
+        "type": "p5",
+        "text": "This is made possible by Redis modules:"
+      },
+      {
+        "type": "ul",
+        "text": [
+          "RedisJSON: For storing and querying JSON data",
+            "RedisGraph: For graph data structures",
+            "RedisTimeSeries: For time-series data",
+            "RedisSearch: For full-text search capabilities"
+        ]
+      },
+      {
+        "type": "h4",
+        "text": "Real-World Use Case: Why Caching Matters"
+      },
+      {
+        "type": "p5",
+        "text": "Let’s say you have a slow SQL query that takes 30 seconds. That’s painful for users. Here's how Redis helps:"
+      },
+      {
+        "type": "h4",
+        "text": "Real-World Use Case: Why Caching Matters"
+      },
+      {
+        "type": "h5",
+        "text": "Without Cache"
+      },
+      {
+        "type": "img",
+        "text": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png",
+        "style": "w-100% h-18 br-1"
+      },
+      {
+        "type": "h5",
+        "text": "With Redis Cache"
+      },
+      {
+        "type": "img",
+        "text": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png",
+        "style": "w-100% h-18 br-1"
+      },
+      {
+        "type": "p5",
+        "text": "Redis started as a caching solution, but has evolved into a robust primary database with support for search, graph, time-series, and even AI."
+      },
+      {
+        "type": "p5",
+        "text": "Whether you're improving the speed of your current app or building a new system that needs low-latency responses — Redis is your friend."
+      }
+]
