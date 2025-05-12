@@ -1,0 +1,215 @@
+[
+    {
+      "type": "h4",
+      "text": "What is CI/CD and What Is It Used For?"
+    },
+    {
+      "type": "p5",
+      "text": "Ever wonder how modern apps get updated so frequently without crashing or going offline? Or how new features appear so seamlessly in your favorite apps?"
+    },
+    {
+        "type": "p5",
+        "text": "The answer lies in CI/CD — a key part of modern software development."
+      },
+      {
+        "type": "p5",
+        "text": "In this article, we’ll break down what CI/CD is, why it’s important, and how it transforms the way software is built and delivered today."
+      },
+      {
+        "type": "h5",
+        "text": "What is CI/CD?"
+      },
+      {
+        "type": "p5",
+        "text": "CI/CD stands for Continuous Integration and Continuous Delivery (or Deployment). It is a development practice and automation pipeline that enables teams to deliver code changes more frequently, reliably, and efficiently."
+      },
+      {
+        "type": "p5",
+        "text": "Let’s break it down:"
+      },
+      {
+        "type": "h5",
+        "text": "CI (Continuous Integration)"
+      },
+      {
+        "type": "p5",
+        "text": "Developers frequently merge their code changes into a shared repository. Each change triggers automated tests and builds to ensure the new code doesn’t break anything."
+      },
+      {
+        "type": "h5",
+        "text": "CD (Continuous Delivery/Deployment)"
+      },
+      {
+        "type": "p5",
+        "text": "Once the code passes all tests, it's automatically delivered to a staging or production environment, depending on the setup."
+      },
+      {
+        "type": "h5",
+        "text": "Why Is CI/CD Important?"
+      },
+      {
+        "type": "p5",
+        "text": "Before CI/CD, developers had to:"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Write code locally",
+            "Test it manually",
+            "Bundle it into a release package",
+            "Deploy it manually to servers"
+        ]
+      },
+      {
+        "type": "p5",
+        "text": "This process was slow, error-prone, and often resulted in 'it works on my machine' issues."
+      },
+      {
+        "type": "p5",
+        "text": "CI/CD solves this by:"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Automating testing",
+            "Catching bugs early",
+            "Deploying faster",
+            "Releasing with confidence"
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Breakdown of the CI/CD Pipeline"
+      },
+      {
+        "type": "p5",
+        "text": "A typical CI/CD pipeline consists of several stages:"
+      },
+      {
+        "type": "h5",
+        "text": "1. Source Stage"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Developer pushes code to a Git repository (like GitHub, GitLab, Bitbucket).",
+            "This triggers the pipeline to start."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "2. Build Stage"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Code is compiled (if needed).",
+            "Dependencies are installed.",
+            "The app is packaged into a deployable format (e.g., Docker image, ZIP file)."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "3. Test Stage"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Unit tests and integration tests are run automatically.",
+            "This ensures that your code behaves as expected."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "4. Deploy Stage"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Code is automatically deployed to a test or staging environment.",
+            "Optionally, it can also be deployed to production (if using Continuous Deployment)."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "5. Monitoring Stage"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Logs and metrics are tracked to monitor application performance and errors after deployment."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Real World Example"
+      },
+      
+      {
+        "type": "p5",
+        "text": "Let’s say you're working on a food delivery app with a team."
+      },
+      {
+        "type": "p5",
+        "text": "Without CI/CD: You finish a new feature and email the code to another developer. They test it manually. Once approved, a DevOps engineer logs into the server at midnight to deploy it. Risky and slow."
+      },
+      {
+        "type": "p5",
+        "text": "With CI/CD: You push your code to GitHub. The CI pipeline runs tests. If they pass, the CD pipeline builds and deploys it to a staging environment. If all goes well, it gets deployed to production automatically."
+      },
+        {
+            "type": "p5",
+            "text": "Result: Faster updates, fewer bugs, happier users."
+        },
+        {
+            "type": "h5",
+            "text": "What Are Some Common Tools Used in CI?"
+        },
+        {
+            "type": "p5",
+            "text": "At the heart of any CI setup is a reliable source code management (SCM) system — this is the foundation."
+        },
+        {
+            "type": "p5",
+            "text": "GitHub is one of the most widely used SCM platforms, and it should contain everything necessary to build your application: source code, automated tests, and build scripts."
+        },
+        {
+            "type": "p5",
+            "text": "To manage the CI process itself, there are several popular tools. Modern platforms like GitHub Actions and Buildkite offer seamless CI integration. More established tools like Jenkins, CircleCI, and Travis CI are also widely used to automate tasks like building, testing, and reporting on your software."
+        },
+        {
+            "type": "p5",
+            "text": "For testing, the tools tend to be language-specific."
+        },
+        {
+            "type": "ul",
+            "text": [
+                "In JavaScript, Jest is a popular choice for unit testing.",
+                "For integration and end-to-end testing of web applications, tools like Playwright and Cypress are commonly used."
+            ]
+        },
+        {
+            "type": "p5",
+            "text": "Build tools are even more tightly coupled with the ecosystem."
+        },
+        {
+            "type": "ul",
+            "text": [
+                "In Java, Gradle is a robust and flexible build automation tool.",
+                "In the JavaScript ecosystem, Webpack is still a standard for bundling applications, though newer tools claim better speed. However, these newer alternatives often lack the extensive plugin and customization support that Webpack provides."
+            ]
+        },
+        {
+            "type": "h5",
+            "text": "What Are Some Common Tools Used in CD?"
+        },
+        {
+            "type": "p5",
+            "text": "Many of the tools used for Continuous Integration, such as GitHub Actions, Buildkite, and Jenkins, are also commonly used to manage Continuous Delivery (CD) tasks."
+        },
+        {
+            "type": "p5",
+            "text": "In addition to these general-purpose tools, there are infrastructure-specific solutions designed to simplify and automate CD processes. For instance, in Kubernetes environments, ArgoCD is a widely adopted tool that makes managing deployments more streamlined and declarative."
+        }
+  ]
+  
