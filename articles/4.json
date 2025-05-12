@@ -1,0 +1,166 @@
+[
+    {
+      "type": "h4",
+      "text": "What is a CDN and How Does It Work?"
+    },
+    {
+      "type": "p5",
+      "text": "Have you ever opened a website and felt like it loaded instantly, no matter where you were in the world?"
+    },
+    {
+        "type": "p5",
+        "text": "You can thank a CDN for that."
+      },
+      {
+        "type": "p5",
+        "text": "In today’s fast-paced digital world, users expect websites to be lightning-fast. Whether you’re in New York, New Delhi, or Nairobi — you want your apps and sites to load quickly. That’s where Content Delivery Networks (CDNs) come into play."
+      },
+      {
+        "type": "h5",
+        "text": "What is a CDN?"
+      },
+      {
+        "type": "p5",
+        "text": "A Content Delivery Network (CDN) is a globally distributed network of servers that delivers web content to users from the server closest to them."
+      },
+      {
+        "type": "p5",
+        "text": "Its main job? Speed up websites, reduce loading times, and improve the user experience."
+      },
+      {
+        "type": "h5",
+        "text": "Why Do We Need CDNs?"
+      },
+      {
+        "type": "p5",
+        "text": "Let’s say you host your website in Mumbai, India, and users are visiting from Delhi, Chennai, or even San Francisco."
+      },
+      {
+        "type": "p5",
+        "text": "Without a CDN:"
+      },
+      {
+        "type": "ul",
+        "text": [
+          "Every user request has to travel all the way to Mumbai and back.",
+          "The farther the user is from the server, the longer it takes."
+        ]
+      },
+      {
+        "type": "p5",
+        "text": "With a CDN:"
+      },
+      {
+        "type": "ul",
+        "text": [
+          "Copies of your content are stored in multiple locations worldwide.",
+          "The content is served from the nearest server (called an edge server) to the user."
+        ]
+      },
+      {
+        "type": "p5",
+        "text": "This reduces delay, decreases bandwidth usage on your original server, and dramatically boosts performance."
+      },
+      {
+        "type": "h5",
+        "text": "How Does a CDN Work?"
+      },
+      {
+        "type": "p5",
+        "text": "At its core, a CDN works by caching static content like HTML, JavaScript, CSS, images, and videos on servers located around the globe. These servers are called Points of Presence (PoPs)."
+      },
+      {
+        "type": "p5",
+        "text": "When a user visits your site, their request is routed to the nearest PoP instead of your main server (called the origin server)."
+      },
+      {
+        "type": "p5",
+        "text": "If the content is already cached on the edge server (called a cache hit), it is delivered instantly."
+      },{
+        "type": "p5",
+        "text": "If it’s not cached (a cache miss), the edge server fetches it from the origin, stores it, and serves it to the user."
+      },
+      {
+        "type": "h5",
+        "text": "How CDNs Route Requests"
+      },
+      {
+        "type": "p5",
+        "text": "Different CDNs use different techniques to determine which PoP should serve a user:"
+      },
+      {
+        "type": "h5",
+        "text": "DNS-Based Routing"
+      },
+      {
+        "type": "ul",
+        "text": [
+          "Each PoP has a unique IP address.",
+          "The DNS system returns the IP address of the PoP closest to the user."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Anycast Routing"
+      },
+      {
+        "type": "ul",
+        "text": [
+          "All PoPs share the same IP address.",
+          "The network automatically routes the request to the nearest server."
+        ]
+      },
+      {
+        "type": "p5",
+        "text": "Both methods aim to reduce the distance between user and content."
+      },
+      {
+        "type": "h5",
+        "text": "What Else Can a CDN Do?"
+      },
+      {
+        "type": "p5",
+        "text": "Modern CDNs are more than just delivery networks. They’re powerful tools that help with:"
+      },
+      {
+        "type": "h5",
+        "text": "Security"
+      },
+      {
+        "type": "ul",
+        "text": [
+          "Protect against DDoS attacks by absorbing traffic across a large network.",
+          "Terminate TLS (HTTPS) connections at the edge, reducing the burden on your server."
+        ]
+      },
+        {
+            "type": "h5",
+            "text": "Performance Optimization"
+        },
+        {
+            "type": "ul",
+            "text": [
+            "Minify and compress files to reduce size.",
+            "Optimize images for faster loading."
+            ]
+        },
+        {
+            "type": "h5",
+            "text": "Analytics"
+        },
+        {
+            "type": "ul",
+            "text": [
+            "Track user behavior, traffic patterns, and performance metrics.",
+            "Identify potential issues before they affect users."
+            ]
+        },
+      {
+        "type": "p5",
+        "text": "A CDN is one of the most powerful tools in web development and deployment. By bringing your content closer to your users, CDNs not only make your website faster but also more secure, resilient, and scalable."
+      },{
+        "type": "p5",
+        "text": "In short, a CDN makes your website feel local to everyone in the world — and that’s a pretty big deal."
+      }
+  ]
+  
