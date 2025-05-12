@@ -1,0 +1,111 @@
+[
+    {
+      "type": "h4",
+      "text": "What is DNS and How Does It Work?"
+    },
+    {
+      "type": "p5",
+      "text": "When you visit a website like www.google.com, have you ever wondered how your browser magically knows where to go? You didn’t enter an IP address, yet you landed on the right page instantly."
+    },
+    {
+        "type": "p5",
+        "text": "That’s the magic of DNS."
+      },
+      {
+        "type": "p5",
+        "text": "Let’s explore how the internet figures out where to send you when you type a website name — and why DNS is one of the most critical systems on the web."
+      },
+      {
+        "type": "h5",
+        "text": "What is a DNS?"
+      },
+      {
+        "type": "p5",
+        "text": "DNS stands for Domain Name System. It’s like the phonebook of the internet, translating human-friendly domain names (like hello.com) into computer-friendly IP addresses (like 142.250.64.78)."
+      },
+      {
+        "type": "p5",
+        "text": "Computers use IP addresses to communicate with each other, but remembering numbers for every website would be impossible. That’s where DNS steps in."
+      },
+      {
+        "type": "p5",
+        "text": "Think of a domain name as someone’s name (e.g., 'Alice')."
+      },
+      {
+        "type": "p5",
+        "text": "Think of an IP address as their home address (e.g., '123 Main Street')."
+      },
+      {
+        "type": "p5",
+        "text": "You know Alice by name, but to send her a letter, you need her physical address."
+      },
+      {
+        "type": "p5",
+        "text": "Similarly, your browser uses DNS to find the IP address for a website name."
+      },
+      {
+        "type": "h5",
+        "text": "How Does DNS Work?"
+      },
+      {
+        "type": "p5",
+        "text": "Here's what happens behind the scenes when you type a URL into your browser:"
+      },
+      {
+        "type": "ol",
+        "text": [
+            "User enters a domain: You type www.example.com into your browser.",
+            "Browser checks local cache: If you’ve visited the site recently, your device may remember the IP address.",
+            "Query goes to a DNS resolver: If it's not in your cache, your device asks a DNS resolver (usually provided by your ISP or a public DNS like Google’s 8.8.8.8).",
+            "Resolver asks the root nameserver: It starts from the top. The root server points to the .com nameserver for your query.",
+            "TLD nameserver responds: The .com nameserver directs the resolver to the authoritative nameserver for example.com.",
+            "Authoritative nameserver replies with the IP: This server knows the exact IP address of www.example.com and sends it back.",
+            "Resolver sends IP to browser: Your browser can now connect to the actual server and load the website."
+        ]
+      },
+      {
+        "type": "p5",
+        "text": "This whole process usually takes milliseconds."
+      },
+      {
+        "type": "h5",
+        "text": "Types of DNS Servers Involved"
+      },
+      {
+        "type": "p5",
+        "text": "DNS Resolver: The first stop (usually managed by your ISP or Google Cloud DNS)"
+      },{
+        "type": "p5",
+        "text": "Root Nameserver: Knows where to find the Top-Level Domain (.com, .org, etc.)"
+      },
+      
+      {
+        "type": "p5",
+        "text": "TLD Nameserver: Knows where to find the specific domain (example.com)"
+      },
+      {
+        "type": "p5",
+        "text": "Authoritative Server: Holds the actual DNS record for the domain"
+      },
+        {
+            "type": "h5",
+            "text": "Caching"
+        },
+        {
+            "type": "p5",
+            "text": "To speed things up, DNS records are cached at various levels (your device, the resolver, etc.). This means that if you visit a site again soon after, it can load even faster."
+        },
+        {
+            "type": "h5",
+            "text": "Why is DNS Important?"
+        },
+        {
+            "type": "p5",
+            "text": "Without DNS, we’d have to remember IP addresses for every website. It’s a fundamental part of how the internet works."
+        },
+        {
+            "type": "p5",
+            "text": "DNS also plays a role in security. Features like DNSSEC help ensure that the responses you get are authentic and haven’t been tampered with."
+        }
+  ]
+  
