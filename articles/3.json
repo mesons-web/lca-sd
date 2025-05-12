@@ -1,0 +1,202 @@
+[
+    {
+      "type": "h4",
+      "text": "What is a Hash Table?"
+    },
+    {
+      "type": "p5",
+      "text": "A hash table is like a smart locker system where each item is stored in a locker using a unique code, called a 'key'. Instead of searching one-by-one, the locker number is calculated using a special function known as a 'hash function'."
+    },
+    {
+      "type": "img",
+      "text": "https://codecoffee-app.github.io/lc-data/handbook-images/hashtable/introduction/1.webp",
+      "style": "w-40 h-14.5 my-3"
+    },
+    {
+      "type": "ul",
+      "text": [
+        "It stores data in key-value pairs.",
+        "The key is passed through a hash function to determine the index in the table.",
+        "It allows fast access, insertion, and deletion."
+      ]
+    },
+    {
+      "type": "h5",
+      "text": "How Does a Hash Table Work?"
+    },
+    {
+      "type": "ol",
+      "text": [
+        "A hash function converts the key into an index (a number).",
+        "The value is stored at that index in an array-like structure.",
+        "When retrieving, the same hash function is used to locate the value instantly."
+      ]
+    },
+    {
+      "type": "code",
+      "text": {
+        "lang": "pseudo",
+        "code": "function insert(key, value):\n  index = hashFunction(key)\n  table[index] = value\n\nfunction get(key):\n  index = hashFunction(key)\n  return table[index]"
+      }
+    },
+    {
+      "type": "h5",
+      "text": "Advantages of Hash Tables"
+    },
+    {
+      "type": "ul",
+      "text": [
+        "Extremely fast data access — on average O(1) time for search, insert, and delete.",
+        "Efficient for lookups when you have unique keys (like usernames or IDs).",
+        "Dynamic resizing — modern hash tables can grow or shrink based on usage.",
+        "Perfect for building caches, databases, and symbol tables in compilers."
+      ]
+    },
+    {
+        "type": "h5",
+        "text": "Common Uses in Programming"
+      },
+      {
+        "type": "ul",
+        "text": [
+          "Implementing associative arrays or dictionaries (e.g., `map` in C++, `dict` in Python).",
+          "Checking for duplicates in a list using a set.",
+          "Counting occurrences of elements (like counting word frequency).",
+          "Creating caches for fast data retrieval (e.g., memoization in dynamic programming).",
+          "Symbol tables in interpreters and compilers.",
+          "Storing routing information in networks (like IP lookup tables)."
+        ]
+      },
+      {
+        "type": "p5",
+        "text": "In real-world applications, hash tables are everywhere — from autocomplete suggestions to storing configuration settings in large systems."
+      },
+        {
+          "type": "h4",
+          "text": "What is a Hash Function?"
+        },
+        {
+          "type": "p5",
+          "text": "A hash function is like a smart calculator that takes in a key (like a name or number) and returns a unique locker number (called a hash) where the data can be stored in a hash table."
+        },
+        {
+          "type": "ul",
+          "text": [
+            "It takes an input (key) and returns a fixed-size integer (hash code).",
+            "The hash code determines the index where the value is stored in the hash table.",
+            "The same key will always produce the same hash code."
+          ]
+        },
+        {
+          "type": "h5",
+          "text": "Simple Example"
+        },
+        {
+          "type": "code",
+          "text": {
+            "lang": "pseudo",
+            "code": "function hashFunction(key):\n  hash = 0\n  for each character in key:\n    hash = hash + ASCII value of character\n  return hash % tableSize"
+          }
+        },
+        {
+          "type": "p5",
+          "text": "In this example, the hash function adds up the ASCII values of all characters in the key and then uses modulo with the table size to ensure it fits inside the table."
+        },
+        {
+          "type": "h5",
+          "text": "Properties of a Good Hash Function"
+        },
+        {
+          "type": "ul",
+          "text": [
+            "Deterministic – The same input should always produce the same output.",
+            "Uniform Distribution – It should spread values evenly across the table to avoid clustering.",
+            "Efficient – It should compute the hash quickly.",
+            "Minimizes Collisions – Fewer chances that different keys get the same hash.",
+            "Works Well with Similar Inputs – Slightly different inputs should give very different hash values."
+          ]
+        },
+        {
+          "type": "p5",
+          "text": "A well-designed hash function helps maintain the speed and efficiency of the hash table by reducing collisions and spreading data evenly."
+        }    ,
+        {
+            "type": "h4",
+            "text": "Different Hash Functions"
+          },
+          {
+            "type": "p5",
+            "text": "Hash functions convert keys into index values that can be used to access data quickly in a hash table. Let's explore three common techniques used to create these functions."
+          },
+          {
+            "type": "h5",
+            "text": "1. Division Method"
+          },
+          {
+            "type": "p5",
+            "text": "This is one of the simplest and most widely used hashing techniques. It uses the remainder operation to map keys to table indices."
+          },
+          {
+            "type": "code",
+            "text": {
+              "lang": "pseudo",
+              "code": "function hash(key):\n  return key % tableSize"
+            }
+          },
+          {
+            "type": "ul",
+            "text": [
+              "Easy to implement.",
+              "Choose a prime number as tableSize to reduce collisions."
+            ]
+          },
+          {
+            "type": "h5",
+            "text": "2. Multiplication Method"
+          },
+          {
+            "type": "p5",
+            "text": "This method multiplies the key by a constant A (0 < A < 1), extracts the fractional part, and multiplies it by the table size."
+          },
+          {
+            "type": "code",
+            "text": {
+              "lang": "pseudo",
+              "code": "function hash(key):\n  A = 0.6180339887  // Constant (approx. golden ratio)\n  fractional = (key * A) % 1\n  return floor(tableSize * fractional)"
+            }
+          },
+          {
+            "type": "ul",
+            "text": [
+              "Distributes keys more uniformly.",
+              "Less sensitive to patterns in input data."
+            ]
+          },
+          {
+            "type": "h5",
+            "text": "3. Mid Square Method"
+          },
+          {
+            "type": "p5",
+            "text": "This method squares the key and extracts the middle digits or bits of the result to get the index."
+          },
+          {
+            "type": "code",
+            "text": {
+              "lang": "pseudo",
+              "code": "function hash(key):\n  square = key * key\n  middleDigits = extractMiddle(square)\n  return middleDigits % tableSize"
+            }
+          },
+          {
+            "type": "ul",
+            "text": [
+              "Good distribution for small key values.",
+              "Requires a function to extract middle digits."
+            ]
+          },
+          {
+            "type": "p5",
+            "text": "Each method has its strengths. The choice depends on your data and the application — but all aim to minimize collisions and spread data evenly across the table."
+          }
+  ]
+  
