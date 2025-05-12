@@ -1,11 +1,9 @@
 [
   {
-        id: 1,
-        title: 'What is an API?',
-        path: 'articles/1.json',
-        image:
-          'https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png',
-        summary:
-          'An API is like a request-and-response system for software. You send it specific instructions (input), and it gives you back the information or result you asked for (output), just like placing an order and getting exactly what you requested.',
-      },
+  "id": 1,
+  "title": "What is an API?",
+  "path": "articles/1.json",
+  "image": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png",
+  "summary": "An API is like a request-and-response system for software. You send it specific instructions (input), and it gives you back the information or result you asked for (output), just like placing an order and getting exactly what you requested."
+}
 ]
