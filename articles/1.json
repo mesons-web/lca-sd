@@ -1,70 +1,126 @@
 [
-    {
-      "type": "h4",
-      "text": "What is a Hash Table?"
-    },
-    {
-      "type": "p5",
-      "text": "A hash table is like a smart locker system where each item is stored in a locker using a unique code, called a 'key'. Instead of searching one-by-one, the locker number is calculated using a special function known as a 'hash function'."
-    },
-    {
-      "type": "ul",
-      "text": [
-        "It stores data in key-value pairs.",
-        "The key is passed through a hash function to determine the index in the table.",
-        "It allows fast access, insertion, and deletion."
-      ]
-    },
-    {
-      "type": "h5",
-      "text": "How Does a Hash Table Work?"
-    },
-    {
-      "type": "ol",
-      "text": [
-        "A hash function converts the key into an index (a number).",
-        "The value is stored at that index in an array-like structure.",
-        "When retrieving, the same hash function is used to locate the value instantly."
-      ]
-    },
-    {
-      "type": "code",
-      "text": {
-        "lang": "pseudo",
-        "code": "function insert(key, value):\n  index = hashFunction(key)\n  table[index] = value\n\nfunction get(key):\n  index = hashFunction(key)\n  return table[index]"
-      }
-    },
-    {
-      "type": "h5",
-      "text": "Advantages of Hash Tables"
-    },
-    {
-      "type": "ul",
-      "text": [
-        "Extremely fast data access — on average O(1) time for search, insert, and delete.",
-        "Efficient for lookups when you have unique keys (like usernames or IDs).",
-        "Dynamic resizing — modern hash tables can grow or shrink based on usage.",
-        "Perfect for building caches, databases, and symbol tables in compilers."
-      ]
-    },
-    {
-        "type": "h5",
-        "text": "Common Uses in Programming"
+      {
+        type: 'h4',
+        text: 'What is an API?',
       },
       {
-        "type": "ul",
-        "text": [
-          "Implementing associative arrays or dictionaries (e.g., `map` in C++, `dict` in Python).",
-          "Checking for duplicates in a list using a set.",
-          "Counting occurrences of elements (like counting word frequency).",
-          "Creating caches for fast data retrieval (e.g., memoization in dynamic programming).",
-          "Symbol tables in interpreters and compilers.",
-          "Storing routing information in networks (like IP lookup tables)."
-        ]
+        type: 'p5',
+        text: 'APIs (Application Programming Interfaces) allow different software systems to communicate with each other. They define a set of rules and protocols for how clients send requests and how servers respond. In effect, an API acts as a contract that enables one program to use the functionality or data of another in a predictable way. For example, when an app requests a weather update, the API processes the request and returns the data in a standard format like JSON or XML.',
       },
       {
-        "type": "p5",
-        "text": "In real-world applications, hash tables are everywhere — from autocomplete suggestions to storing configuration settings in large systems."
-      }
-  ]
-  
+        type: 'p5',
+        text: 'In practice, many everyday apps rely on external APIs. A mapping service might use Google Map’s API to get location data, and a travel website might call various airline or hotel APIs to find availability. Online stores use payment gateway APIs (such as PayPal or Razorpay) to securely handle transactions, and weather apps fetch forecasts via public weather APIs.',
+      },
+      {
+        type: 'h4',
+        text: 'Real-world Analogies',
+      },
+      {
+        type: 'ul',
+        text: [
+          'Remote control: An API is like the remote for your entertainment system. You press a button (make a request) without needing to know how the TV or audio system works internally. The remote sends a signal (the API call) to the system, which then performs the action (like changing the channel or volume) and sends back a response.',
+          'Restaurant (Waiter): An API works like a waiter in a restaurant. It takes a customer’s order (request) to the kitchen (server) and brings back the meal (data). It also provides the "menu" of available services (API documentation) and makes sure orders are handled consistently.',
+        ],
+      },
+      {
+        type: 'h4',
+        text: 'How APIs Work',
+      },
+      {
+        type: 'p5',
+        text: 'APIs operate on a request/response model. A client (for example, a web browser or mobile app) makes a request to an API endpoint, and the server provides a response. The API acts as the intermediary that defines how the two communicate. Typically, there are three roles in this interaction: the client that sends the request, the server that fulfills it, and the API which defines the interface between them.',
+      },
+      {
+        type: 'img',
+        text: 'https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png',
+        style: 'w-100% h-18 br-1',
+      },
+      {
+        type: 'ol',
+        text: [
+          'The client application sends an HTTP request to the API, specifying a method (GET, POST, etc.) and any needed parameters.',
+          'The API gateway or server receives the request and may authenticate or validate it (for example, checking API keys or headers).',
+          'The gateway routes the request to the appropriate backend service or function (for example, querying a database or invoking a server function).',
+          'The backend service processes the request and returns the result to the API. Finally, the API sends the response data back to the client (often with an HTTP status code)',
+        ],
+      },
+      {
+        type: 'p5',
+        text: 'For example, a developer might write code like the following to call an API endpoint:',
+      },
+      {
+        type: 'code',
+        text: {
+          lang: 'pseudo',
+          code: "apiResponse = HttpClient.sendRequest(\n    method = 'GET',\n    url = 'https://api.example.com/data',\n    headers = {'Authorization': 'Bearer <token>'}\n)\nif apiResponse.status == 200:\n    data = parseJSON(apiResponse.body)",
+        },
+      },
+      {
+        type: 'h4',
+        text: 'Types of APIs',
+      },
+      {
+        type: 'ul',
+        text: [
+          'Public (Open) APIs: Available for any developer to use, often with minimal authentication. These expose services or data to the public internet',
+          'Partner APIs: Shared with specific business partners. Access typically requires an onboarding process and special credentials',
+          'Private (Internal) APIs: Used only within an organization to connect internal systems; they are not exposed externally',
+          'Composite APIs: Combine multiple service calls into one API request, useful for simplifying complex workflows or microservice operations',
+          'Operating System (System) APIs: Provide access to OS-level services like file systems or networking',
+          'Data (Database) APIs: Allow applications to interact with database systems or other data services',
+          'Remote APIs: Enable communication between distributed systems or processes over a network',
+          'Library/API (Code) Interfaces: Let programs use functions or services from external code libraries or modules.',
+        ],
+      },
+      {
+        type: 'h4',
+        text: 'API Architectural Styles',
+      },
+      {
+        type: 'ul',
+        text: [
+          'REST (Representational State Transfer): An architectural style that typically uses HTTP and stateless communication. REST APIs can return data in various formats (often JSON) and are known for being lightweight and widely used.',
+          'SOAP (Simple Object Access Protocol): A protocol that uses XML for messaging and defines strict standards for communication. SOAP is more rigid (with built-in security and transaction support) and is often used in enterprise scenarios.',
+        ],
+      },
+      {
+        type: 'h4',
+        text: 'What is an API Gateway?',
+      },
+      {
+        type: 'p5',
+        text: 'An API gateway is a service that acts as a single entry point for multiple API calls. It accepts requests from clients and forwards them to the appropriate backend services (acting as a reverse proxy) In addition to routing, the gateway handles cross-cutting tasks such as authentication, rate limiting, and monitoring on behalf of the backend services',
+      },
+      {
+        type: 'p5',
+        text: 'Think of the API gateway like the front door to an apartment building When a client makes a request, they knock at the gateway. The gateway checks their credentials and then directs the request to the correct internal service. The requested data is processed inside, and the gateway brings the response back to the client',
+      },
+      {
+        type: 'h4',
+        text: 'How API Gateways Work',
+      },
+      {
+        type: 'p5',
+        text: 'When a request arrives at an API gateway, the gateway typically processes it in stages',
+      },
+      {
+        type: 'ol',
+        text: [
+          'Authentication & Validation: The gateway checks any credentials (API keys, tokens) and enforces policies or quotas',
+          'Routing: The gateway forwards the validated request to the appropriate backend service or function based on the endpoint',
+          'Aggregation & Response: The backend service executes the request. The gateway then collects the result, possibly aggregates data from multiple services, and sends the final response back to the client',
+        ],
+      },
+      {
+        type: 'h4',
+        text: 'Benefits of an API Gateway',
+      },
+      {
+        type: 'ul',
+        text: [
+          'Centralized security and monitoring: The gateway handles authentication, rate limiting, and logging for all APIs in one place',
+          'Simplified client access: Clients only need to call a single endpoint (the gateway) instead of multiple services',
+          'Better microservices support: Backend services can change or be scaled without affecting clients, since the gateway provides a stable interface',
+        ],
+      },
+    ];
