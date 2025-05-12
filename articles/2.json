@@ -107,10 +107,6 @@
         "text": "Let’s say you have a slow SQL query that takes 30 seconds. That’s painful for users. Here's how Redis helps:"
       },
       {
-        "type": "h4",
-        "text": "Real-World Use Case: Why Caching Matters"
-      },
-      {
         "type": "h5",
         "text": "Without Cache"
       },
