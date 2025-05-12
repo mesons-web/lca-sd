@@ -19,5 +19,12 @@
   "path": "articles/3.json",
   "image": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png",
   "summary": "A hash table is like a smart locker system where each item is stored in a locker using a unique code, called a 'key'. Instead of searching one-by-one, the locker number is calculated using a special function known as a 'hash function'."
+},
+  {
+  "id": 4,
+  "title": "What is a CDN and How Does It Work?",
+  "path": "articles/4.json",
+  "image": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png",
+  "summary": "A Content Delivery Network (CDN) is a globally distributed network of servers that delivers web content to users from the server closest to them. It speeds up websites, reduce loading times, and improve the user experience."
 }
 ]
