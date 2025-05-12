@@ -12,5 +12,12 @@
   "path": "articles/2.json",
   "image": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png",
   "summary": "Redis (Remote Dictionary Server) is an open-source, in-memory, multi-model database known for its sub-millisecond latency. Imagine Redis like a super-fast notebook for your applications — one that lives entirely in memory (RAM), not on a slow disk."
+},
+  {
+  "id": 3,
+  "title": "What is Hash Table and Hashing?",
+  "path": "articles/3.json",
+  "image": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png",
+  "summary": "A hash table is like a smart locker system where each item is stored in a locker using a unique code, called a 'key'. Instead of searching one-by-one, the locker number is calculated using a special function known as a 'hash function'."
 }
 ]
