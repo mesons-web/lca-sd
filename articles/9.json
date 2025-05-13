@@ -1,0 +1,169 @@
+[
+    {
+      "type": "h4",
+      "text": "What is OAuth?"
+    },
+    {
+      "type": "p5",
+      "text": "Ever logged into a new app using your Google, Facebook, or GitHub account without entering a password? That seamless login experience is powered by OAuth — an open standard protocol that lets you give apps limited access to your data without ever sharing your password."
+    },
+    {
+        "type": "p5",
+        "text": "OAuth (Open Authorization) is a secure way to authorize third-party applications to access your resources, like profile information, photos, or emails, without compromising your credentials."
+      },
+      {
+        "type": "h5",
+        "text": "Why Was OAuth Needed?"
+      },
+      {
+        "type": "p5",
+        "text": "Before OAuth, the only way to give a third-party app access to your data was by giving them your username and password — a risky move! It meant apps had full access to your account and could act on your behalf indefinitely."
+      },
+      {
+        "type": "p5",
+        "text": "OAuth was designed to solve this by:"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Avoiding password sharing",
+            "Granting limited and revocable access",
+            "Improving mobile and cross-platform compatibility",
+            "Simplifying secure access for third-party services"
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Real-Life Example: How OAuth Works"
+      },
+      {
+        "type": "p5",
+        "text": "Let’s say Anna wants to print her photos stored on PixVault using a printing service called PrintEasy."
+      },
+      {
+        "type": "p5",
+        "text": "Here's how OAuth handles this securely:"
+      },
+      {
+        "type": "ol",
+        "text": [
+            "Request Access: Anna tells PrintEasy to access her PixVault photos.",
+            "Authorization Request: PrintEasy asks PixVault (via the Authorization Server) for permission, sharing its identity and what kind of access it needs (scope).",
+            "User Consent: Anna logs into PixVault and approves PrintEasy's request.",
+            "Authorization Code: PixVault sends a temporary code back to PrintEasy.",
+            "Token Exchange: PrintEasy uses this code to get an Access Token from PixVault’s Authorization Server.",
+            "Secure Access: With the token, PrintEasy accesses only the photos Anna allowed — without ever seeing her login credentials."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "OAuth Keeps Control in Your Hands"
+      },
+      {
+        "type": "p5",
+        "text": "OAuth ensures:"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Your password is never shared with the third-party app.",
+            "You can revoke access at any time.",
+            "Apps get access to only what they need — not your full account."
+        ]
+      },
+      {
+        "type": "p5",
+        "text": "It also supports Refresh Tokens, which allow the app to renew access without bothering the user again."
+      },
+      {
+        "type": "h5",
+        "text": "Key Components of OAuth 2.0"
+      },
+      {
+        "type": "p5",
+        "text": "To understand OAuth better, let’s break down its main players:"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Resource Owner: You (the user) who owns the data.",
+            "Client: The third-party app that wants access (like PrintEasy).",
+            "Authorization Server: The gatekeeper that handles login and issues tokens.",
+            "Resource Server: The service (like PixVault) that holds your protected data."
+        ]
+      },
+      {
+        "type": "h5",
+        "text":  "What is an Access Token?"
+      },
+      {
+        "type": "p5",
+        "text": "An Access Token is a digital key that lets an app access your data securely. It usually has an expiry time and limited permissions (defined by scopes)."
+      },
+      {
+        "type": "p5",
+        "text": "Sometimes, a Refresh Token is also given, which helps the app request a new Access Token without needing your approval again."
+      },
+      {
+        "type": "h5",
+        "text": "Scopes in OAuth"
+      },
+      {
+        "type": "p5",
+        "text": "Scopes define what the app can access. For example:"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "profile: Access to your basic profile",
+            "email: Permission to read your email address",
+            "photos.read: Only view your photos"
+        ]
+      },
+      {
+        "type": "p5",
+        "text": "The Authorization Server grants access only within the defined scope."
+      },
+      {
+        "type": "h5",
+        "text": "Authorization vs Authentication"
+      },
+      {
+        "type": "p5",
+        "text": "Many people confuse authentication (who you are) with authorization (what you're allowed to do). OAuth handles the authorization part."
+      },
+      {
+        "type": "p5",
+        "text": "Example:"
+      },
+      {
+        "type": "p5",
+        "text": "Authentication: Proving you are Anna (like logging into PixVault)."
+      },
+      {
+        "type": "p5",
+        "text": "Authorization: Letting PrintEasy access just your photos — not your contacts or account settings."
+      },
+      {
+        "type": "p5",
+        "text": "OAuth is often paired with authentication protocols like SAML or OpenID Connect for full user management."
+      },
+      {
+        "type": "h5",
+        "text": "Summary"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "OAuth is a secure and flexible protocol for third-party authorization.",
+            "It lets users approve access without sharing passwords.",
+            "It works via tokens, scopes, and permission grants.",
+            "OAuth 2.0 is used by giants like Google, Facebook, GitHub, and more."
+        ]
+      },
+      {
+        "type": "p5",
+        "text": "So next time you “Sign in with Google,” just know — OAuth is working behind the scenes to keep your data safe while giving apps just the right amount of access!"
+      }
+  ]
+  
