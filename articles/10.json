@@ -170,15 +170,15 @@
         "text": "Summary"
       },
       {
-        "type": "h5",
+        "type": "p5",
         "text": "Load balancing is the invisible force behind the smooth and responsive digital experiences we enjoy every day."
       },
       {
-        "type": "h5",
+        "type": "p5",
         "text": "It distributes requests across multiple servers, improves reliability, boosts performance, and scales to meet demand, protects against server failure and downtime."
       },
       {
-        "type": "h5",
+        "type": "p5",
         "text": "So next time a website loads quickly during a busy event — remember, a load balancer is silently working in the background to make it happen!"
       }
   ]
