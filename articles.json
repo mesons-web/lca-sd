@@ -40,5 +40,12 @@
   "path": "articles/6.json",
   "image": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png",
   "summary": "CI/CD stands for Continuous Integration and Continuous Delivery (or Deployment). It is a development practice and automation pipeline that enables teams to deliver code changes more frequently, reliably, and efficiently."
+},
+  {
+  "id": 7,
+  "title": "What Are JWT Tokens and How Do They Work?",
+  "path": "articles/7.json",
+  "image": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png",
+  "summary": "JWT stands for JSON Web Token, a compact and self-contained way to transmit information securely between parties as a JSON object."
 }
 ]
