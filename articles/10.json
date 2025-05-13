@@ -47,9 +47,10 @@
         "text": "Here’s how load balancing changes the game:"
       },
       {
-        "type": "img",
-        "text": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png"
-      },
+      "type": "img",
+      "text": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png",
+      "style": "w-100% h-18 br-1"
+    },
       {
         "type": "ol",
         "text": [
