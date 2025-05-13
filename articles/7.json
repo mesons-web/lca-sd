@@ -1,0 +1,245 @@
+[
+    {
+      "type": "h4",
+      "text": "What Are JWT Tokens and How Do They Work?"
+    },
+    {
+      "type": "p5",
+      "text": "Have you ever logged into a website or app and wondered how it remembers you without asking for your password every time? Or maybe you've heard developers mention \"JWT tokens\" and thought, \"What exactly are those?\""
+    },
+    {
+        "type": "p5",
+        "text": "Let’s simplify the concept and take a closer look at JWT tokens — what they are, why they're used, and how they work."
+      },
+      {
+        "type": "h5",
+        "text": "Traditional Authentication (Cookie + Session)"
+      },
+      {
+        "type": "p5",
+        "text": "Before JWTs became popular, websites mostly used sessions and cookies to remember users."
+      },
+      {
+        "type": "p5",
+        "text": "Here’s how a session-based authentication flow works:"
+      },
+      {
+        "type": "img",
+        "text": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png",
+        "style": "w-100% h-18 br-1"
+      },
+      {
+        "type": "h5",
+        "text": "Problems with Sessions:"
+      },
+      {
+        "type": "ol",
+        "text": [
+            "Server memory is used to store sessions.",
+            "Scaling becomes difficult in distributed systems.",
+            "If the server restarts, sessions may be lost.",
+            "External session store increases complexity."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Enter JWT (JSON Web Token)"
+      },
+      {
+        "type": "p5",
+        "text": "JWT stands for JSON Web Token, a compact and self-contained way to transmit information securely between parties as a JSON object."
+      },
+      {
+        "type": "p5",
+        "text": "Imagine you’re at a party, and the host gives you a wristband. Once you have it, you can access the food and drinks without having to reintroduce yourself. Similarly, JWT is your digital wristband."
+      },
+      {
+        "type": "h5",
+        "text": "JWT Structure"
+      },
+      {
+        "type": "p5",
+        "text": "A JWT consists of three parts, separated by dots (.):"
+      },
+      {
+        "type": "code",
+        "text": {
+            "code": "HEADER.PAYLOAD.SIGNATURE",
+            "lang":"bash"
+        }
+      },
+      {
+        "type": "p5",
+        "text": "Header- Contains metadata about the token itself."
+      },
+      {
+        "type": "p5",
+        "text": "Payload- Contains arbitrary data relevant to the system."
+      },
+      {
+        "type": "p5",
+        "text": "Signature- Used to verify the authenticity of the token."
+      },
+      {
+        "type": "p5",
+        "text": "Each part is Base64URL encoded."
+      },
+      {
+        "type": "h5",
+        "text": "Sample Header"
+      },
+      {
+        "type": "code",
+        "text": {
+            "code": "{\n  \"alg\": \"HS256\",\n  \"typ\": \"JWT\"\n}",
+            "lang":"json"
+        }
+      },
+      {
+        "type": "h5",
+        "text": "Sample Payload"
+      },
+      {
+        "type": "code",
+        "text": {
+            "code": "{\n  \"sub\": \"1234567890\",\n  \"name\": \"Jane Doe\",\n  \"iat\": 1516239022\n}",
+            "lang":"json"
+        }
+      },
+      {
+        "type": "h5",
+        "text": "Signature (HMACSHA256)"
+      },
+      {
+        "type": "code",
+        "text": {
+            "code": "HMACSHA256(\n  base64UrlEncode(header) + \".\" + base64UrlEncode(payload),\n  your-256-bit-secret\n)\n",
+            "lang":"bash"
+        }
+      },
+      {
+        "type": "h5",
+        "text": "How JWT Authentication Works (Step-by-Step)"
+      },
+      {
+        "type": "p5",
+        "text": 
+            "Let’s compare how JWT-based login works compared to the traditional session method."
+        
+      },
+      {
+        "type": "img",
+        "text": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png",
+        "style": "w-100% h-18 br-1"
+      },
+      {
+        "type": "h5",
+        "text": "Advantages of JWTs over Sessions"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Server storage needed in Sessions but no in JWTs",
+            "JWTs are easy to scale across servers",
+            "JWTs can be used across different domains",
+            "JWT is Stateless Authentication"
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Use Cases of JWTs"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Authentication: After login, server issues a JWT to identify the user.",
+            "Authorization: JWT is passed in each request to access protected routes.",
+            "Information Exchange: JWTs are signed and optionally encrypted, providing integrity and confidentiality."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Let’s Visualize a JWT"
+      },
+      {
+        "type": "code",
+        "text": {
+            "code": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.\neyJzdWIiOiJSb2hpdCIsIm5hbWUiOiJIZWxsbywgV29ybGQhIiwiaWF0IjoxMjQxMTExMDIwMjN9.\njBWWWvyUnkguSSXtphPqkSbmGieh3nq2QiqrDJJDlwc\n",
+            "lang":"bash"
+        }
+      },
+      {
+        "type": "h5",
+        "text": "Here's what this token contains:"
+      },
+      {
+        "type": "h5",
+        "text": "Header (Base64URL decoded)"
+      },
+      {
+        "type": "code",
+        "text": {
+            "code": "{\n  \"alg\": \"HS256\",\n  \"typ\": \"JWT\"\n}",
+            "lang":"json"
+        }
+      },
+      {
+        "type": "h5",
+        "text": "Payload (Base64URL decoded)"
+      },
+      {
+        "type": "code",
+        "text": {
+            "code": "{\n  \"sub\": \"Rohit\",\n  \"name\": \"Hello, World!\",\n  \"iat\": 124111102023\n}",
+            "lang":"json"
+        }
+      },
+      {
+        "type": "h5",
+        "text": "Signature"
+      },
+      {
+        "type": "code",
+        "text": {
+            "code": "Signed hash of Header and Payload using the secret key.",
+            "lang":"json"
+        }
+      },
+      {
+        "type": "img",
+        "text": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png",
+        "style": "w-100% h-18 br-1"
+      },
+      {
+        "type": "h5",
+        "text": "What If Someone Tampers With It?"
+      },
+      
+      {
+        "type": "p5",
+        "text": "Let’s say someone changes the payload from:"
+      },
+      {
+        "type": "code",
+        "text": {
+            "code": "\"name\": \"Hello, World!\"",
+            "lang":"json"
+        }
+      },
+      {
+        "type": "p5",
+        "text": "to"
+      },
+      {
+        "type": "code",
+        "text": {
+            "code": "\"name\": \"Admin!\"",
+            "lang":"json"
+        }
+      },
+      {
+        "type": "p5",
+        "text": "The server verifies the signature when it receives the token. If the contents have changed, the hash won't match the original signature, and the server will reject the request."
+      }
+  ]
+  
