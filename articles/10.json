@@ -1,0 +1,184 @@
+[
+    {
+      "type": "h4",
+      "text": "What is Load Balancing?"
+    },
+    {
+      "type": "p5",
+      "text": "Have you ever visited a website during a big sale or a major event, only to find it super slow or completely down? In today’s digital age, we expect websites and apps to be fast, smooth, and always available — even when thousands or millions of users visit at once."
+    },
+    {
+        "type": "p5",
+        "text": "So, how do companies like Amazon, Netflix, or YouTube keep their services running flawlessly?\nThe answer is Load Balancing."
+      },
+      {
+        "type": "p5",
+        "text": "Load Balancing is the process of distributing incoming network traffic across multiple servers so that no single server gets overwhelmed. It improves reliability, performance, and availability of applications."
+      },
+      {
+        "type": "h5",
+        "text": "What Happens Without a Load Balancer?"
+      },
+      {
+        "type": "p5",
+        "text": "Let’s start with a real-world analogy."
+      },
+      {
+        "type": "p5",
+        "text": "Imagine a popular food truck with only one chef. If 100 people show up at once, that one chef can’t handle all orders fast — people will wait, and some may leave."
+      },
+      {
+        "type": "p5",
+        "text": "The same thing happens when a single server handles thousands of users:"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Single Point of Failure: If the server crashes, your website goes down entirely.",
+            "Overloaded Server: Too many users slow down the server, leading to lag or even a crash."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "How Load Balancing Works"
+      },
+      {
+        "type": "p5",
+        "text": "Here’s how load balancing changes the game:"
+      },
+      {
+        "type": "img",
+        "text": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png"
+      },
+      {
+        "type": "ol",
+        "text": [
+            "Users send requests to your website.",
+            "The Load Balancer receives those requests.",
+            "It then forwards each request to one of the multiple backend application servers.",
+            "The selected server handles the request and responds back to the user."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Types of Load Balancers"
+      },
+      {
+        "type": "p5",
+        "text": "There are different types of load balancers based on how and where they are used:"
+      },
+      {
+        "type": "ol",
+        "text": [
+            "Hardware Load Balancers\nPhysical devices used in large enterprises. High performance, but expensive.",
+            "Software Load Balancers\nInstalled on regular servers. Cost-effective and flexible (e.g., HAProxy, Nginx).",
+            "Cloud Load Balancers\nProvided by cloud platforms like AWS ELB, Google Cloud Load Balancing, and Azure Load Balancer. Easy to set up, scalable, and managed by providers."
+        ]
+      },
+      {
+        "type": "h5",
+        "text":  "Load Balancing Algorithms"
+      },
+      {
+        "type": "p5",
+        "text": "Load balancers use algorithms to decide which server gets each request. These algorithms can be static or dynamic."
+      },
+      {
+        "type": "h5",
+        "text": "Static Algorithms"
+      },
+      {
+        "type": "p5",
+        "text": "These don’t consider the current load or performance of servers."
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Round Robin:\nDistributes requests in a circular order — server 1, server 2, server 3, then back to server 1.",
+            "Weighted Round Robin:\nAssigns “weights” to servers. A more powerful server gets more requests.",
+            "IP Hashing:\nUses a user’s IP to consistently send them to the same server (useful for session persistence)."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Dynamic Algorithms"
+      },
+      {
+        "type": "p5",
+        "text": "These check the real-time state of each server before assigning requests."
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Least Connections:\nChooses the server with the fewest active connections.",
+            "Weighted Least Connections:\nLike least connections, but considers server capacity.",
+            "Least Response Time:\nPicks the server with the lowest response time and fewest connections.",
+            "Resource-Based:\nMeasures CPU, memory, and disk usage before sending the request."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Real-World Examples"
+      },
+      {
+        "type": "h5",
+        "text": "Static Load Balancing"
+      },
+      {
+        "type": "p5",
+        "text": "An educational blog with consistent, low-volume traffic may use static round-robin to split requests among identical servers."
+      },
+      {
+        "type": "h5",
+        "text": "Dynamic Load Balancing"
+      },
+      {
+        "type": "p5",
+        "text": "An e-commerce platform during a big sale may use dynamic methods to adjust in real-time — sending traffic to servers that are healthy and available."
+      },
+      {
+        "type": "h5",
+        "text": "Benefits of Load Balancing"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Increased Performance:\nPrevents overload, keeping response times fast.",
+            "High Availability:\nIf one server fails, others still handle requests.",
+            "Scalability:\nEasily add or remove servers as traffic changes.",
+            "Fault Tolerance:\nAutomatically redirects traffic away from failed servers.",
+            "Session Persistence:\nKeeps a user's session alive, even if routed across servers.",
+            "Traffic Prediction:\nSome smart software load balancers can predict usage spikes."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Drawbacks of Load Balancers"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Single Point of Failure:\nIf the load balancer itself fails, everything can stop (solution: use redundant or multi-region load balancers).",
+            "Complex Setup:\nNeeds proper configuration, especially in hybrid or multi-cloud environments.",
+            "Extra Cost:\nHardware solutions or managed cloud load balancers may incur additional charges.",
+            "Latency Overhead:\nSome algorithms or added checks can introduce minor delays."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Summary"
+      },
+      {
+        "type": "h5",
+        "text": "Load balancing is the invisible force behind the smooth and responsive digital experiences we enjoy every day."
+      },
+      {
+        "type": "h5",
+        "text": "It distributes requests across multiple servers, improves reliability, boosts performance, and scales to meet demand, protects against server failure and downtime."
+      },
+      {
+        "type": "h5",
+        "text": "So next time a website loads quickly during a busy event — remember, a load balancer is silently working in the background to make it happen!"
+      }
+  ]
+  
