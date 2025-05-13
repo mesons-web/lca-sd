@@ -49,9 +49,10 @@
         "text": "Let’s break it down with a simple real-life example. Imagine opening www.facebook.com in your browser:"
       },
       {
-        "type": "img",
-        "text": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png"
-      },
+          "type": "img",
+          "text": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png",
+          "style": "w-100% h-18 br-1"
+        },
       {
         "type": "h5",
         "text": "Step-by-Step:"
