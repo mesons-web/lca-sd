@@ -1,0 +1,221 @@
+[
+    {
+      "type": "h4",
+      "text": "What is HTTP and How Does it Work?"
+    },
+    {
+      "type": "p5",
+      "text": "Have you ever wondered what makes the internet work so seamlessly? You open your browser, type in a website like www.google.com, and it loads instantly. But how does that information get to you?"
+    },
+    {
+        "type": "p5",
+        "text": "The secret sauce behind this magical data exchange is a protocol called HTTP. Let’s understand what HTTP really is, how it works, and why it’s so important in the digital world."
+      },
+      {
+        "type": "h5",
+        "text": "What is HTTP?"
+      },
+      {
+        "type": "p5",
+        "text": "HTTP stands for HyperText Transfer Protocol. It's a set of rules that defines how messages are formatted and transmitted across the internet."
+      },
+      {
+        "type": "p5",
+        "text": "You can think of HTTP as the language your browser uses to speak to a server."
+      },
+      {
+        "type": "p5",
+        "text": "Whenever you open a website, click on a link, or submit a form – HTTP is working silently in the background to get and send the right data."
+      },
+      {
+        "type": "h5",
+        "text": "Key Characteristics of HTTP:"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Application Layer: HTTP operates at the highest layer in the OSI model.",
+            "Stateless: Each request is independent – the server doesn’t remember previous interactions.",
+            "Connectionless: The connection between client and server is closed after each request-response.",
+            "Text-based: HTTP messages are in plain, human-readable text."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "How Does HTTP Work?"
+      },
+      {
+        "type": "p5",
+        "text": "Let’s break it down with a simple real-life example. Imagine opening www.facebook.com in your browser:"
+      },
+      {
+        "type": "img",
+        "text": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png"
+      },
+      {
+        "type": "h5",
+        "text": "Step-by-Step:"
+      },
+      {
+        "type": "ol",
+        "text": [
+            "URL Entered: You type a URL in the browser like www.facebook.com.",
+            "DNS Lookup: The browser asks a DNS server to find the IP address of Facebook’s server.",
+            "Send Request: The browser sends an HTTP GET request to that IP, asking for the webpage.",
+            "Server Responds: Facebook's server processes the request and sends back a response.",
+            "Show Content: The browser takes that data and displays the webpage."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "HTTP is Stateless"
+      },
+      {
+        "type": "p5",
+        "text": "Each HTTP request is independent. The server doesn’t remember if you've visited before."
+      },
+      {
+        "type": "p5",
+        "text": "Let’s say you visit a product page on an e-commerce site and then go to your cart. Without some kind of memory (like cookies or sessions), the server would treat those as two completely separate users."
+      },
+      {
+        "type": "p5",
+        "text": "That's where cookies come in – they help maintain state in a stateless protocol."
+      },
+      {
+        "type": "h5",
+        "text": "HTTP is Connectionless"
+      },
+      {
+        "type": "p5",
+        "text": "Once the server sends back the requested data, the connection is closed. If you make another request, a new connection is created."
+      },
+      {
+        "type": "p5",
+        "text": "This design makes HTTP lightweight and fast but also means that memory of previous interactions isn’t maintained by default."
+      },
+      {
+        "type": "h5",
+        "text":  "HTTP Status Codes"
+      },
+      {
+        "type": "p5",
+        "text": "Whenever your browser sends a request to a server (like opening a website), the server replies with a status code. This code tells your browser what happened with the request."
+      },
+      {
+        "type": "p5",
+        "text": "Here’s a breakdown of what the status codes mean:"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "1xx – Informational: The request was received, and the server is continuing the process.\nExample: 100 Continue",
+            "2xx – Success: The request was successfully received and processed.\nExample: 200 OK",
+            "3xx – Redirection: You need to take additional steps to complete the request (often redirected to another page).\nExample: 301 Moved Permanently",
+            "4xx – Client Errors: There’s something wrong with the request sent by the browser.\nExample: 404 Not Found (means the requested page does not exist)",
+            "5xx – Server Errors: The server failed to fulfill a valid request.\nExample: 500 Internal Server Error"
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "HTTP Methods"
+      },
+      {
+        "type": "p5",
+        "text": "HTTP defines a set of methods that specify what action the client (browser) wants the server to perform."
+      },
+      {
+        "type": "p5",
+        "text": "Let’s understand the most common ones:"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "GET: Used to retrieve data from the server.\nExample: Opening a webpage.",
+            "POST: Used to send data to the server.\nExample: Submitting a form.",
+            "PUT: Used to update existing data on the server.\nExample: Updating your profile information.",
+            "DELETE: Used to remove specific data from the server.\nExample: Deleting a post or comment.",
+            "PATCH: Used for making partial updates to existing data.\nExample: Editing just your email in a profile form.",
+            "HEAD: Retrieves headers (metadata) about the resource, without the content itself."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "HTTP vs HTTPS"
+      },
+      {
+        "type": "h5",
+        "text": "Security"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "HTTP does not encrypt the data you send or receive. This can expose sensitive information.",
+            "HTTPS uses SSL/TLS encryption to secure the data. It’s ideal for logging in, shopping, or banking."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Port Number"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "HTTP uses port 80",
+            "HTTPS uses port 443"
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Use Case"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "HTTP is suitable for general browsing or non-sensitive data.",
+            "HTTPS is necessary for handling passwords, payment details, and private user data."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "SEO and Trust"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "HTTP doesn’t offer SEO advantages and doesn’t show any trust signals.",
+            "HTTPS boosts your search engine ranking and displays the 🔒 lock icon in the browser, building user trust."
+        ]
+      },
+      {
+        "type": "p5",
+        "text": "HTTPS = HTTP + Encryption. It's the safer, more secure sibling of HTTP."
+      },
+      {
+        "type": "h5",
+        "text": "Advantages of HTTP"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Fast and lightweight: Great for quick communication.",
+            "Simple and human-readable: Easy to debug and develop.",
+            "Supports caching and compression: Improves speed and efficiency.",
+            "Widespread support: Every browser and server speaks HTTP."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Disadvantages of HTTP"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Not secure: Data is transmitted in plaintext.",
+            "Stateless: Needs help from cookies or sessions.",
+            "Easily intercepted: Vulnerable on public networks.",
+            "No built-in encryption: Unlike HTTPS, which is more secure."
+        ]
+      }
+  ]
+  
