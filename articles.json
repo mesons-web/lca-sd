@@ -61,5 +61,12 @@
   "path": "articles/9.json",
   "image": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png",
   "summary": "OAuth (Open Authorization) is a secure way to authorize third-party applications to access your resources, like profile information, photos, or emails, without compromising your credentials."
+},
+  {
+  "id": 10,
+  "title": "What is Load Balancing?",
+  "path": "articles/10.json",
+  "image": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png",
+  "summary": "Load Balancing is the process of distributing incoming network traffic across multiple servers so that no single server gets overwhelmed. It improves reliability, performance, and availability of applications."
 }
 ]
