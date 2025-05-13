@@ -54,5 +54,12 @@
   "path": "articles/8.json",
   "image": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png",
   "summary": "HTTP stands for HyperText Transfer Protocol. It's a set of rules that defines how messages are formatted and transmitted across the internet. You can think of HTTP as the language your browser uses to speak to a server."
+},
+  {
+  "id": 9,
+  "title": "What is OAuth?",
+  "path": "articles/9.json",
+  "image": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png",
+  "summary": "OAuth (Open Authorization) is a secure way to authorize third-party applications to access your resources, like profile information, photos, or emails, without compromising your credentials."
 }
 ]
