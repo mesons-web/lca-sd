@@ -47,5 +47,12 @@
   "path": "articles/7.json",
   "image": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png",
   "summary": "JWT stands for JSON Web Token, a compact and self-contained way to transmit information securely between parties as a JSON object."
+},
+  {
+  "id": 8,
+  "title": "What is HTTP and How Does it Work?",
+  "path": "articles/8.json",
+  "image": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png",
+  "summary": "HTTP stands for HyperText Transfer Protocol. It's a set of rules that defines how messages are formatted and transmitted across the internet. You can think of HTTP as the language your browser uses to speak to a server."
 }
 ]
