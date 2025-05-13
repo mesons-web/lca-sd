@@ -50,10 +50,6 @@
         "text": "JWT stands for JSON Web Token, a compact and self-contained way to transmit information securely between parties as a JSON object."
       },
       {
-        "type": "p5",
-        "text": "Imagine you’re at a party, and the host gives you a wristband. Once you have it, you can access the food and drinks without having to reintroduce yourself. Similarly, JWT is your digital wristband."
-      },
-      {
         "type": "h5",
         "text": "JWT Structure"
       },
@@ -113,7 +109,7 @@
       {
         "type": "code",
         "text": {
-            "code": "HMACSHA256(\n  base64UrlEncode(header) + \".\" + base64UrlEncode(payload),\n  your-256-bit-secret\n)\n",
+            "code": "HMACSHA256(\n  base64UrlEncode(header) + \".\" + base64UrlEncode(payload),\n  your-256-bit-secret\n)",
             "lang":"bash"
         }
       },
@@ -164,7 +160,7 @@
       {
         "type": "code",
         "text": {
-            "code": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.\neyJzdWIiOiJSb2hpdCIsIm5hbWUiOiJIZWxsbywgV29ybGQhIiwiaWF0IjoxMjQxMTExMDIwMjN9.\njBWWWvyUnkguSSXtphPqkSbmGieh3nq2QiqrDJJDlwc\n",
+            "code": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.\neyJzdWIiOiJSb2hpdCIsIm5hbWUiOiJIZWxsbywgV29ybGQhIiwiaWF0IjoxMjQxMTExMDIwMjN9.\njBWWWvyUnkguSSXtphPqkSbmGieh3nq2QiqrDJJDlwc",
             "lang":"bash"
         }
       },
