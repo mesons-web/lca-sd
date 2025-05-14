@@ -1,0 +1,368 @@
+[
+    {
+      "type": "h4",
+      "text": "System Design of Google Maps: Architecture, Components & Scalability"
+    },
+    {
+      "type": "p5",
+      "text": "Google Maps is one of the most powerful location-based services, offering a comprehensive mapping platform that combines real-time traffic data, satellite imagery, and navigation features. Behind its intuitive interface lies a highly complex, distributed system designed to scale globally and operate with high availability, precision, and low latency."
+    },
+    {
+        "type": "p5",
+        "text": "In this article, we’ll break down the complete system design of Google Maps, exploring both high-level and low-level architecture, core services, data handling, and scalability strategies."
+      },
+      {
+        "type": "h5",
+        "text": "What is Google Maps?"
+      },
+      {
+        "type": "p5",
+        "text": "Google Maps is a web and mobile-based service that enables users to:"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "View satellite and street maps",
+            "Get 360° panoramic views (Street View)",
+            "Navigate turn-by-turn by foot, vehicle, or public transit",
+            "Receive real-time traffic updates",
+            "Discover nearby places (POIs)"
+        ]
+      },
+      {
+        "type": "p5",
+        "text": "It operates through a rich interface accessible via browsers or the Google Maps app, serving billions of requests every day."
+      },
+      {
+        "type": "h5",
+        "text": "System Goals and Key Requirements"
+      },
+      {
+        "type": "h5",
+        "text": "Functional Requirements"
+      },
+      {
+        "type": "p5",
+        "text": "Dynamic Map Display"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Zooming, panning, and rendering in multiple styles: Street, Terrain, Satellite, and Hybrid.",
+            "360° Street View imagery integration."
+        ]
+      },
+      {
+        "type": "p5",
+        "text": "Location Search and Navigation"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Search by address, landmark, business name, or coordinates.",
+            "Provide optimal routes using real-time traffic, road closures, and preferred transport modes."
+        ]
+      },
+      {
+        "type": "p5",
+        "text": "Traffic and Weather Updates"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Overlay real-time traffic data and weather alerts (storms, floods).",
+            "Predict delays and suggest alternate routes."
+        ]
+      },
+      {
+        "type": "p5",
+        "text": "Nearby Places (POI) Discovery"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "“Near me” searches for places like gas stations, ATMs, gyms, restaurants.",
+            "Rankings based on ratings, visit frequency, services, and opening hours."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Non-Functional Requirements"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "High Availability: Near-zero downtime to ensure constant access.",
+            "Scalability: Handle billions of concurrent users globally.",
+            "Accuracy: Map, location, and route data must be timely and precise.",
+            "Security: User data privacy and secure API access.",
+            "Latency: Fast response for map rendering, location queries, and rerouting."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "High-Level Architecture of Google Maps"
+      },
+      {
+        "type": "p5",
+        "text": "Google Maps architecture can be visualized in three layers:"
+      },
+      {
+        "type": "img",
+        "text": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png",
+        "style": "w-100% h-18 br-1"
+      },
+      {
+        "type": "p5",
+        "text": "Each component plays a specific role in delivering a seamless user experience. Let’s break them down:"
+      },
+      {
+        "type": "h5",
+        "text": "Presentation Layer"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Renders maps and allows user interactions.",
+            "Accepts user input (search, route requests, zoom, drag).",
+            "Built using responsive frameworks with WebGL for smooth rendering."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Application Layer"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Routing Service: Calculates shortest/fastest paths using Dijkstra or A* algorithm.",
+            "Search Service: Finds addresses, businesses using fuzzy search and spatial indexes.",
+            "Traffic Analyzer: Collects real-time data from GPS sensors, user devices, and road networks.",
+            "Rendering Engine: Generates map tiles on demand based on geo-coordinates and zoom level.",
+            "Recommendation & POI Service: Shows nearby, trending places with details and ratings."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Data Layer"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Map Data Storage: Terrain, streets, and imagery stored in Google’s distributed systems (Bigtable, GFS).",
+            "Traffic Data Streams: Real-time feeds stored and processed using stream processors (Flink, Kafka).",
+            "POI Database: Structured data of places, stored in geospatial DBs like Spanner with indexing."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Low-Level System Design"
+      },
+      {
+        "type": "h5",
+        "text":  "Core Data Structures"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Tile-based Grid System\n Maps are broken into tiles (typically 256x256 px), served based on zoom levels and coordinates.",
+            "Quadtrees / Geohash Partitioning\n Used to divide space into hierarchical regions, allowing efficient retrieval and rendering."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Data Models"
+      },
+      {
+        "type": "ol",
+        "text": [
+            "Entity: POI\nAttributes: name, location, category, rating, open_hours",
+            "Entity: Route\nAttributes: source, destination, path_segments, ETA",
+            "Entity: TrafficData\nAttributes: segment_id, speed, congestion_level, timestamp",
+            "Entity: UserHistory\nAttributes: user_id, searched_places, visited_locations"
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Components and Services Breakdown"
+      },
+      {
+        "type": "h5",
+        "text": "Map Rendering Service"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Inputs: Coordinates, zoom level",
+            "Output: Map tiles with overlays (labels, traffic)",
+            "Techniques: WebGL rendering, tile caching, CDN delivery"
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Routing Engine"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Real-time shortest path computation with Dijkstra / A*",
+            "Edge weights dynamically adjusted with traffic conditions"
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Place Search Service"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Uses inverted indexes and R-trees",
+            "Handles misspellings with fuzzy search",
+            "Returns POI cards with metadata, photos, and reviews"
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Traffic Aggregation System"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Sources: GPS from Android devices, city traffic sensors, Google Waze input",
+            "Real-time processing using Kafka → Flink → BigQuery"
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Map Tile Distribution"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Global CDN architecture to cache and serve static tiles",
+            "Cache invalidation for updated tiles pushed from back-end"
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Capacity Planning and Estimations"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Map Data: ~1 PB+",
+            "POI Data: 100+ TB",
+            "Traffic Data: 500 TB/day",
+            "Bandwidth: 10,000+ PB/day",
+            "Servers: Millions (Globally Distributed)"
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Why Not a Pure Quadtree?"
+      },
+      {
+        "type": "p5",
+        "text": "While quadtrees are great for spatial partitioning, Google Maps leverages hybrid approaches:"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Dynamic data variance (e.g., live traffic) requires flexibility beyond rigid tree structures.",
+            "Varying density of roads, cities, and POIs means adaptive partitioning is more efficient.",
+            "Google may use geohash-based partitioning or custom spatial indexing instead."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Security and Reliability"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "OAuth 2.0 & JWT for API authentication.",
+            "Role-Based Access Control to limit user permissions.",
+            "Encryption at rest and in transit for sensitive user data.",
+            "Failover Systems and Replication for fault tolerance and uptime."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "API and Microservices Architecture"
+      },
+      {
+        "type": "p5",
+        "text": "Google Maps is modular, with each core service (e.g., routing, map rendering, POI) implemented as a microservice."
+      },
+      {
+        "type": "p5",
+        "text": "Common APIs:"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "GET /map-tiles?zoom=14&x=2034&y=4059",
+            "GET /route?origin=A&dest=B&type=driving",
+            "GET /places?query=coffee+near+me",
+            "GET /traffic?region=NY",
+            "POST /location/update"
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Database Architecture"
+      },
+      {
+        "type": "p5",
+        "text": "Google Maps uses a mix of distributed storage systems:"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Bigtable for Map tile metadata",
+            "Cloud Spanner for POI and business listings", 
+            "BigQuery for Historical traffic analysis",
+            "Firestore for Real-time updates, user prefs"
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Scalability Techniques"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "CDN Caching: Reduces load by caching map tiles closer to users",
+            "Data Replication: Ensures fault tolerance and high availability",
+            "Load Balancing: Efficient request distribution across global servers",
+            "Sharding: Partitioning POI, traffic, and search indexes by regions",
+            "Microservices: Decouples components for independent scaling and deployment"
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "System Design Summary Diagram"
+      },
+      {
+        "type": "p5",
+        "text": "Here’s a conceptual terminal-based layout for the architecture:"
+      },
+      {
+        "type": "img",
+        "text": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png",
+        "style": "w-100% h-18 br-1"
+      },
+      {
+        "type": "h5",
+        "text": "Final Thoughts"
+      },
+      {
+        "type": "p5",
+        "text": "Designing a system like Google Maps requires architectural excellence across spatial data handling, low-latency data delivery, real-time processing, and intelligent routing. It combines high-precision geospatial data with massive scalability and near real-time user interactions."
+      },
+      {
+        "type": "p5",
+        "text": "From delivering billions of tile requests per day to offering turn-by-turn navigation across the globe, Google Maps is a masterclass in distributed system design."
+      }
+  ]
+  
