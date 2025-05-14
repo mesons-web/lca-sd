@@ -1,10 +1,349 @@
 [
     {
       "type": "h4",
-      "text": "System Design of Youtube - A Complete Architecture"
+      "text": "System Design of Youtube"
     },
-  {
+    {
       "type": "p5",
-      "text": "Youtube is one of the most popular and extensible video streaming services and the architecture contains various components that enhance user experience. When it comes down to Youtube services, it is been that commonly used in the daily world with tremendous users so the system design corresponding is likely a bit complex. "
-    }
-]
+      "text": "YouTube is a global video platform handling billions of daily requests—from uploads and searches to personalized recommendations and video delivery. Designing such a large-scale system requires a combination of efficient architecture, intelligent component separation, and fault-tolerant infrastructure."
+    },
+    {
+        "type": "p5",
+        "text": "In this article, we’ll break down YouTube’s system architecture from a practical engineering perspective, covering the following:"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "System Requirements",
+            "High-Level Design (HLD)",
+            "Low-Level Design (LLD)",
+            "Key Design Decisions for Scalability, Reliability, and Performance"
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Design Goals & Principles"
+      },
+      {
+        "type": "p5",
+        "text": "Before diving into the technical layers, let’s define the core objectives behind YouTube’s architecture:"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Buffer-Free Playback: Videos should stream smoothly without interruptions.",
+            "Global Availability: Content must be accessible anytime, anywhere.",
+            "Fault Tolerance: Even in the event of server failures, the system should remain operational.",
+            "Elastic Scalability: The system must handle sudden surges in user activity and data volume.",
+            "Durable Storage: No uploaded video should ever be lost."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Step 1: Requirement Gathering"
+      },
+      {
+        "type": "h5",
+        "text": "Functional Requirements"
+      },
+      {
+        "type": "p5",
+        "text": "Video Lifecycle Management:"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Upload, play, delete, or share videos.",
+            "Support multiple video formats and resolutions.",
+            "Generate video thumbnails and captions automatically."
+        ]
+      },
+      {
+        "type": "p5",
+        "text": "User Interactions:"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Post comments, likes/dislikes.",
+            "Subscribe to channels and receive notifications.",
+            "Curate personal playlists."
+        ]
+      },
+      {
+        "type": "p5",
+        "text": "Search & Discovery:"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Full-text search across video titles, tags, and transcripts.",
+            "Filter by relevance, date, popularity, and category.",
+            "Provide trending and recommended videos."
+        ]
+      },
+      {
+        "type": "p5",
+        "text": "Personalized Recommendations:"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Suggest videos based on watch history and user engagement.",
+            "Auto-play next content."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Non-Functional Requirements"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Reliability: Multiple backups, failover systems, and content replication.",
+            "Availability: Use of distributed servers, CDNs, and load balancers.",
+            "Latency: Fast playback and minimal delay for uploads and updates.",
+            "Security: Encrypted uploads, secure APIs, and role-based permissions.",
+            "Scalability: Microservices and autoscaling infrastructure."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Step 2: High-Level System Architecture"
+      },
+      {
+        "type": "img",
+        "text": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png",
+        "style": "w-100% h-18 br-1"
+      },
+      {
+        "type": "h5",
+        "text": "UI & Client Interfaces"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Responsive, consistent UI across platforms (web, Android, iOS, smart TVs).",
+            "Minimal friction for upload and sharing.",
+            "Support for offline viewing and background playback."
+        ]
+      },
+      {
+        "type": "h5",
+        "text":  "User Management"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "OAuth 2.0 and token-based authentication (JWT).",
+            "Email or social login support.",
+            "User preference management and session handling."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Video Upload & Storage Flow"
+      },
+      {
+        "type": "ol",
+        "text": [
+            "Client uploads video chunks to object storage (e.g., AWS S3, Google Cloud Storage).",
+            "A background service triggers video transcoding to generate multiple bitrates.",
+            "Metadata (title, description, tags) is stored in a relational database.",
+            "Thumbnails, captions, and analytics are generated asynchronously."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Video Streaming and Delivery"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Adaptive bitrate streaming via HLS or DASH.",
+            "Content Delivery Networks (CDNs) like Akamai, Cloudflare, or Google CDN to serve videos globally.",
+            "Load balancing across regions for optimal latency."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Recommendation Engine"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Uses collaborative filtering and content-based algorithms.",
+            "Factors: Watch history, likes, subscriptions, watch time, session duration.",
+            "Built using distributed ML platforms (e.g., TensorFlow, Spark ML)."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Search Infrastructure"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Powered by Elasticsearch or Solr.",
+            "Indexes metadata, transcripts, and tags.",
+            "Provides fast autocomplete, spelling correction, and filters."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Comments and Social Interactions"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Stored in scalable NoSQL databases (e.g., MongoDB, Cassandra).",
+            "Real-time updates via WebSockets or Server-Sent Events (SSE).",
+            "Moderation through a mix of AI filters and human review."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Step 3: Low-Level Design"
+      },
+      {
+        "type": "h5",
+        "text": "Object-Oriented Design (Class Diagrams)"
+      },
+      {
+        "type": "img",
+        "text": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png",
+        "style": "w-100% h-18 br-1"
+      },
+      {
+        "type": "h5",
+        "text": "Microservices & APIs"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Upload Service: Handles multipart uploads.\nPOST /upload",
+            "Streaming Service: Serves chunked video content.\nGET /stream/{video_id}",
+            "Recommendation Service:\nGET /user/{id}/recommendations",
+            "Search Service:\nGET /search?q={query}"
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Data Modeling & Storage"
+      },
+      {
+        "type": "h5",
+        "text": "SQL Tables"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Users(user_id, email, password_hash, preferences)",
+            "Videos(video_id, user_id, title, tags, timestamp)",
+            "Comments(comment_id, user_id, video_id, content, time)",
+            "Subscriptions(user_id, channel_id)"
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "NoSQL Collections"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "VideoMetadata: For fast lookup of video info.",
+            "UserHistory: Tracks recently watched videos.",
+            "RecommendationCache: Stores ML output."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Scaling & Optimization"
+      },
+      {
+        "type": "h5",
+        "text": "Caching"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Redis or Memcached for storing frequently accessed metadata.",
+            "Frontend caching of static assets and thumbnails."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Database Sharding"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Split Videos table by user ID or upload date.",
+            "Use range-based sharding for Comments."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Message Queues"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Use Kafka or RabbitMQ for background tasks like:\nTranscoding\nCaption generation\nAnalytics updates"
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Security & Data Integrity"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Authentication: OAuth2 / JWT",
+            "Authorization: Role-based permissions (admin, user, moderator)",
+            "Encryption: HTTPS for transport, AES for at-rest data",
+            "Rate Limiting & Throttling: Prevent abuse of upload or streaming APIs"
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Monitoring & Analytics"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Use Prometheus + Grafana for system health.",
+            "Provide dashboards to content creators (views, likes, demographics).",
+            "Log user actions to improve recommendations and detect spam."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Integration & Extensibility"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Well-documented RESTful APIs for developers.",
+            "Third-party integrations with:\nSocial media platforms\nAdvertisement networks\nLivestreaming tools"
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Summary"
+      },
+      {
+        "type": "p5",
+        "text": "Designing a scalable video-sharing platform like YouTube involves managing vast amounts of data, ensuring uninterrupted video delivery, and providing real-time features to users globally. Here's a recap of key takeaways:"
+      },
+      {
+        "type": "img",
+        "text": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png",
+        "style": "w-100% h-18 br-1"
+      },
+      {
+        "type": "p5",
+        "text": "By designing modular, decoupled systems that scale horizontally, you can build platforms capable of handling the immense demands of a service like YouTube."
+      }
+  ]
+  
