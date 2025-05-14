@@ -1,0 +1,10 @@
+[
+    {
+      "type": "h4",
+      "text": "System Design of Youtube - A Complete Architecture"
+    },
+  {
+      "type": "p5",
+      "text": "Youtube is one of the most popular and extensible video streaming services and the architecture contains various components that enhance user experience. When it comes down to Youtube services, it is been that commonly used in the daily world with tremendous users so the system design corresponding is likely a bit complex. "
+    }
+]
