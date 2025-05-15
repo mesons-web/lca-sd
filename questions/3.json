@@ -1,0 +1,342 @@
+[
+    {
+      "type": "h4",
+      "text": "System Design: URL Shortening Service"
+    },
+    {
+      "type": "p5",
+      "text": "In today’s digital world, sharing lengthy URLs can be inconvenient, especially on platforms with character limitations. URL shorteners like Bit.ly, TinyURL, and ZipZy.in address this issue by converting long, complex URLs into short, manageable links that are easy to share and track."
+    },
+      {
+        "type": "h5",
+        "text": "What is a URL Shortener?"
+      },
+      {
+        "type": "p5",
+        "text": "A URL shortener is a web service that transforms a long URL into a shortened version, typically consisting of a domain and a short, unique identifier. When accessed, this shortened link redirects the user to the original long URL."
+      },
+      {
+        "type": "p5",
+        "text": "Popular services like Bit.ly and ZipZy.in not only simplify links but also offer features like click tracking, link expiration, and analytics."
+      },
+      {
+        "type": "h5",
+        "text": "Core Requirements"
+      },
+      {
+        "type": "h5",
+        "text": "Functional Requirements"
+      },
+      {
+        "type": "ol",
+        "text": [
+            "Accept a long URL and generate a unique, shortened URL.",
+            "Redirect users to the original URL when they access the short link.",
+            "Automatically expire links after a default duration (unless specified).",
+            "Prevent duplicate entries for the same long URL if possible."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Non-Functional Requirements"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "High Availability: The system must be online continuously since broken links disrupt redirection.",
+            "Low Latency: Redirection should occur almost instantly.",
+            "Non-Predictability: Shortened URLs should be hard to guess to prevent misuse.",
+            "Scalability: The system must support billions of URLs and requests."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Estimating Capacity"
+      },
+      {
+        "type": "p5",
+        "text": "Assuming:"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "30 million new shortened URLs per month",
+            "Data retention for 5 years"
+        ]
+      },
+      {
+        "type": "p5",
+        "text": "That gives:"
+      },
+      {
+        "type": "code",
+        "text": {
+            "lang":"bash",
+            "code" : "30M * 12 months * 5 years = 1.8 billion URLs"
+        }
+      },
+      {
+        "type": "h5",
+        "text": "Storage Calculation:"
+      },
+      {
+        "type": "p5",
+        "text": "Each record stores:"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Long URL (~2KB)",
+            "Short URL (17 bytes)",
+            "Creation timestamp (~7 bytes)",
+            "Expiry duration (~7 bytes)"
+        ]
+      },
+      {
+        "type": "p5",
+        "text": "Total per entry: ~2.03 KB"
+      },
+      {
+        "type": "p5",
+        "text": "Monthly storage: ~60.78 GB"
+      },
+      {
+        "type": "p5",
+        "text": "Yearly: ~0.73 TB"
+      },
+      {
+        "type": "p5",
+        "text": "In 5 years: ~3.65 TB"
+      },
+      {
+        "type": "h5",
+        "text": "Techniques for URL Generation"
+      },
+      {
+        "type": "h5",
+        "text": "Base62 Encoding"
+      },
+      {
+        "type": "p5",
+        "text":  "Base62 uses [A-Z, a-z, 0-9] → 62 characters."
+      },
+      {
+        "type": "p5",
+        "text": "For a 7-character ID:"
+      },
+      {
+        "type": "code",
+        "text": {
+            "code": "62^7 ≈ 3.5 trillion combinations",
+            "lang": "bash"
+        }
+      },
+      {
+        "type": "p5",
+        "text": "Example:"
+      },
+      {
+        "type": "code",
+        "text": {
+            "lang":"python",
+            "code": "def to_base_62(number):\n    chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'\n    result = ''\n    while number > 0:\n        result = chars[number % 62] + result\n        number //= 62\n    return result"
+        }
+      },
+      {
+        "type": "h5",
+        "text": "MD5 Hashing"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Generate a 128-bit MD5 hash of the long URL.",
+            "Use the first 43 bits to get a 7-character Base62 string.",
+            "Pros: Space optimization via deduplication.",
+            "Cons: Collisions are possible; need DB check."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Counter-Based Approach"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Maintain a central auto-incrementing counter.",
+            "Convert the counter to Base62 to generate a unique short ID.",
+            "Suitable for distributed environments using techniques like Snowflake ID."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Database Design"
+      },
+      {
+        "type": "h5",
+        "text": "Data Fields"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "id: Primary key / short ID",
+            "original_url: Full long URL",
+            "created_at: Timestamp",
+            "expiration_time: TTL",
+            "click_count: Optional analytics field"
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "NoSQL (e.g., Cassandra, DynamoDB)"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "High availability",
+            "Horizontal scalability",
+            "Eventual consistency is acceptable for this use case"
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Caching & Load Balancing"
+      },
+      {
+        "type": "h5",
+        "text": "Caching (Redis/Memcached)"
+      },
+      {
+        "type": "p5",
+        "text": "Use caching to reduce database reads:"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Frequently accessed short URLs are stored in memory.",
+            "Read-through cache: Load from DB on cache miss."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Load Balancing"
+      },
+      {
+        "type": "p5",
+        "text": "Use load balancers to:"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Distribute incoming requests to app servers",
+            "Balance traffic between app servers, DBs, and caches",
+            "Use algorithms like Round Robin or Least Connections"
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "High-Level Architecture"
+      },
+      {
+        "type": "img",
+        "text": "https://raw.githubusercontent.com/mesons-web/lca-sd/refs/heads/main/Images/img1.png",
+        "style": "w-100% h-18 br-1"
+      },
+      {
+        "type": "h5",
+        "text": "Redirection Logic"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Client accesses: https://zipzy.in/abc123",
+            "App Server checks cache → if hit, redirects instantly",
+            "If miss, retrieves from DB and updates cache",
+            "Responds with HTTP 301 redirect to original URL"
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Analytics & Click Tracking"
+      },
+      {
+        "type": "p5",
+        "text": "Each short link can log:"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Number of clicks",
+            "Time of access",
+            "Browser/device info",
+            "Referrer"
+        ]
+      },
+      {
+        "type": "p5",
+        "text": "These logs can be stored in analytics databases like BigQuery, Snowflake, etc., for insights."
+      },
+      {
+        "type": "h5",
+        "text": "Security Measures"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Phishing Protection: Scan original URLs using URL reputation services.",
+            "Rate Limiting: Prevent abuse and DDoS attacks.",
+            "HTTPS: Secure all traffic.",
+            "Link Expiry: Expire malicious or unused links automatically."
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Cleanup & Expiry"
+      },
+      {
+        "type": "p5",
+        "text": "Use background workers (cron jobs or message queues) to:"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Periodically remove expired URLs",
+            "Clean up old analytics data",
+            "Archive or compress older data"
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "API Endpoints"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "/shorten (POST): Create a short URL",
+            "/:shortId (GET): Redirect to original URL",
+            "/analytics/:shortId (GET): Fetch analytics for a short URL"
+        ]
+      },
+      {
+        "type": "h5",
+        "text": "Conclusion"
+      },
+      {
+        "type": "p5",
+        "text": "A URL shortener may seem like a simple application, but it involves designing a robust, highly scalable, and reliable backend system. Whether you're building something like Bit.ly or ZipZy.in, core challenges include:"
+      },
+      {
+        "type": "ul",
+        "text": [
+            "Generating unique short IDs",
+            "Storing and retrieving millions (or billions) of records",
+            "Handling redirects with low latency",
+            "Preventing collisions and abuse",
+            "Offering real-time analytics"
+        ]
+      },
+      {
+        "type": "p5",
+        "text": "By carefully architecting each component and leveraging modern infrastructure (NoSQL, caching, distributed ID generation), we can build a production-grade URL shortening service."
+      }
+  ]
+  
